@@ -1,0 +1,146 @@
+Main.java
+public class Main {
+    public static void main(String[] args) {
+        User user = new User("ashmitha123", "1234");
+        ATM atm = new ATM(user);
+        atm.start();
+    }
+}
+ATM.java
+import java.util.Scanner;
+
+public class ATM {
+    private User user;
+    private Scanner scanner;
+
+    public ATM(User user) {
+        this.user = user;
+        this.scanner = new Scanner(System.in);
+    }
+
+    public void start() {
+        System.out.println("Welcome to the ATM!");
+        if (authenticate()) {
+            int option;
+            do {
+                System.out.println("\n--- ATM Menu ---");
+                System.out.println("1. Transaction History");
+                System.out.println("2. Withdraw");
+                System.out.println("3. Deposit");
+                System.out.println("4. Transfer");
+                System.out.println("5. Quit");
+                System.out.print("Choose an option: ");
+                option = scanner.nextInt();
+
+                switch (option) {
+                    case 1:
+                        user.getAccount().printTransactionHistory();
+                        break;
+                    case 2:
+                        performWithdraw();
+                        break;
+                    case 3:
+                        performDeposit();
+                        break;
+                    case 4:
+                        performTransfer();
+                        break;
+                    case 5:
+                        System.out.println("Thank you for using the ATM!");
+                        break;
+                    default:
+                        System.out.println("Invalid option. Try again.");
+                }
+            } while (option != 5);
+        } else {
+            System.out.println("Authentication failed.");
+        }
+    }
+
+    private boolean authenticate() {
+        System.out.print("Enter user ID: ");
+        String enteredId = scanner.next();
+        System.out.print("Enter PIN: ");
+        String enteredPin = scanner.next();
+        return user.authenticate(enteredId, enteredPin);
+    }
+
+    private void performWithdraw() {
+        System.out.print("Enter amount to withdraw: ");
+        double amount = scanner.nextDouble();
+        user.getAccount().withdraw(amount);
+    }
+
+    private void performDeposit() {
+        System.out.print("Enter amount to deposit: ");
+        double amount = scanner.nextDouble();
+        user.getAccount().deposit(amount);
+    }
+
+    private void performTransfer() {
+        System.out.print("Enter recipient name: ");
+        String recipient = scanner.next();
+        System.out.print("Enter amount to transfer: ");
+        double amount = scanner.nextDouble();
+        user.getAccount().transfer(recipient, amount);
+    }
+}
+User.java
+public class User {
+    private String userId;
+    private String pin;
+    private Account account;
+
+    public User(String userId, String pin) {
+        this.userId = userId;
+        this.pin = pin;
+        this.account = new Account();
+    }
+
+    public boolean authenticate(String enteredId, String enteredPin) {
+        return this.userId.equals(enteredId) && this.pin.equals(enteredPin);
+    }
+
+    public Account getAccount() {
+        return account;
+    }
+}
+Account.java
+public class User {
+    private String userId;
+    private String pin;
+    private Account account;
+
+    public User(String userId, String pin) {
+        this.userId = userId;
+        this.pin = pin;
+        this.account = new Account();
+    }
+
+    public boolean authenticate(String enteredId, String enteredPin) {
+        return this.userId.equals(enteredId) && this.pin.equals(enteredPin);
+    }
+
+    public Account getAccount() {
+        return account;
+    }
+}
+Transaction.java
+import java.time.LocalDateTime;
+
+public class Transaction {
+    private String type;
+    private double amount;
+    private LocalDateTime timestamp;
+
+    public Transaction(String type, double amount) {
+        this.type = type;
+        this.amount = amount;
+        this.timestamp = LocalDateTime.now();
+    }
+
+    @Override
+    public String toString() {
+        return timestamp + " - " + type + ":  Rs." + amount;
+    }
+}
