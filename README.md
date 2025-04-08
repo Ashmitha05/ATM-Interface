@@ -1,3 +1,6 @@
+👩‍💻 Developed by: G.A.Ashmitha
+🎓 Internship Domain: Java Development
+🏢 Company: Oasis Infobyte
 ## Task 2
 # 💳 ATM Interface (Console-Based Java Project)
 
