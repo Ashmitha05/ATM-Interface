@@ -1,7 +1,4 @@
-Got it, Ashmitha! Here's an extended version of your **README** with **more detailed content** and **without the Technologies Used** section. It's structured, professional, and internship-ready:
-
----
-
+## Task 2
 # 💳 ATM Interface (Console-Based Java Project)
 
 This project is **Task 2** of my Java Development Internship at **Oasis Infobyte**.  
@@ -39,16 +36,6 @@ Once the user logs in, the following operations can be performed:
 - Demonstrates the use of **encapsulation**, **inheritance**, and **data handling** in Java.
 - Reinforces core programming concepts like conditionals, loops, methods, arrays/lists, and string operations.
 - Handles edge cases such as insufficient balance, invalid inputs, and incorrect login details.
-
-## 🧩 Project Structure
-
-The program is divided into five Java classes, each with its own responsibility:
-
-1. **Main Class** – Entry point of the program; handles login and navigation.
-2. **Account Class** – Manages user data, including balance and transaction history.
-3. **Transaction Class** – Stores and processes transaction data (deposit, withdraw, transfer).
-4. **ATMOperations Class** – Contains the logic for performing operations like withdraw, deposit, etc.
-5. **User Class** – Handles user authentication and account linkage.
 
 ## 🎓 What I Learned
 
